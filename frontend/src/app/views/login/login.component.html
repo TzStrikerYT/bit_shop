@@ -1,1 +1,42 @@
-<p>login works!</p>
+<div class="d-flex justify-content-center">
+    <div class="w-25 border m-5 p-5 rounded">
+      <form #userForm="ngForm">
+        <h3 class="my-4 text-purple text-center">Iniciar Sesión</h3>
+  
+        <hr class="mb-4" />
+  
+        <div class="mb-3">
+          <label for="exampleInputEmail1" class="form-label"
+            >Correo Electrónico</label
+          >
+          <input
+            type="email"
+            class="form-control"
+            id="exampleInputEmail1"
+            aria-describedby="emailHelp"
+  
+            name="email"
+            #email="ngModel"
+            [(ngModel)]="userService.currentUser.email"
+          />
+        </div>
+        <div class="mb-3">
+          <label for="exampleInputPassword1" class="form-label"
+            >Contraseña</label
+          >
+          <input
+            type="password"
+            class="form-control"
+            id="exampleInputPassword1"
+  
+            name="password"
+            #password="ngModel"
+            [(ngModel)]="userService.currentUser.password"
+          />
+        </div>
+          <button type="submit" class="btn btn-success" (click)="login(userForm)">Iniciar Sesion</button>
+       
+      </form>
+    </div>
+  </div>
+  
