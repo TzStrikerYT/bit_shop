@@ -3,6 +3,7 @@ import { UserService } from 'src/app/services/user.service';
 import { HttpClient } from '@angular/common/http';
 import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
+import { User } from 'src/app/models/user.model';
 
 @Component({
   selector: 'app-login',
@@ -14,6 +15,7 @@ export class LoginComponent implements OnInit {
   constructor(public userService: UserService, public router: Router) { }
 
   ngOnInit(): void {
+    this.userService.currentUser = new User()
   }
 
   login(form: NgForm){

@@ -54,4 +54,10 @@ export class UserService {
     return decoded
   }
 
+  getFullName(): string {
+    const data = this.decodeToken()
+    console.log(data)
+    return `${data.firstName} ${data.lastName}`
+  }
+
 }
