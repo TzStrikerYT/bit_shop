@@ -23,8 +23,8 @@
           <td>{{ product.image }}</td>
           <td>
             <div class="d-flex justify-content-center">
-              <i class="material-icons text-success m-2">refresh</i>
-              <i class="material-icons text-danger m-2">delete</i>
+              <i class="material-icons text-success m-2" style="cursor: pointer;" (click)="updateProduct(product)">refresh</i>
+              <i class="material-icons text-danger m-2" style="cursor: pointer;" (click)="deleteProduct(product._id)">delete</i>
             </div>
           </td>
         </tr>
@@ -40,6 +40,14 @@
   
         <hr class="mb-4" />
   
+        <input
+            type="hidden"
+            id="_id"
+            name="_id"
+            #_id="ngModel"
+            [ngModel]="productService.currentProduct._id"
+          />
+
         <div class="mb-3">
           <label for="name" class="form-label">Nombre del producto</label>
           <input
@@ -49,33 +57,33 @@
             aria-describedby="emailHelp"
             name="name"
             #name="ngModel"
-            [(ngModel)]="productService.currentProduct.name"
+            [ngModel]="productService.currentProduct.name"
           />
         </div>
   
         <div class="mb-3">
           <label for="price" class="form-label">Precio</label>
           <input
-            type="text"
+            type="number"
             class="form-control"
             id="price"
             aria-describedby="emailHelp"
             name="price"
             #price="ngModel"
-            [(ngModel)]="productService.currentProduct.price"
+            [ngModel]="productService.currentProduct.price"
           />
         </div>
   
         <div class="mb-3">
           <label for="stock" class="form-label">Stock</label>
           <input
-            type="text"
+            type="number"
             class="form-control"
             id="stock"
             aria-describedby="emailHelp"
             name="stock"
             #stock="ngModel"
-            [(ngModel)]="productService.currentProduct.stock"
+            [ngModel]="productService.currentProduct.stock"
           />
         </div>
   
@@ -88,7 +96,7 @@
             aria-describedby="emailHelp"
             name="image"
             #image="ngModel"
-            [(ngModel)]="productService.currentProduct.image"
+            [ngModel]="productService.currentProduct.image"
           />
         </div>
   
@@ -100,11 +108,11 @@
             id="description"
             name="description"
             #description="ngModel"
-            [(ngModel)]="productService.currentProduct.description"
+            [ngModel]="productService.currentProduct.description"
           ></textarea>
         </div>
   
-        <button type="submit" class="btn btn-success">Guardar</button>
+        <button type="submit" class="btn btn-success" (click)="createProduct(productForm)">Guardar</button>
       </form>
     </div>
 </div>
