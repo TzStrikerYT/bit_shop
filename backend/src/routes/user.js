@@ -14,8 +14,6 @@ router.post('/signup', async (request, response) => {
 
         const isExist = await User.find({email: request.body.email})
 
-        console.log(isExist)
-
         if(isExist.length > 0){
             return response.status(400).json({status: "El correo ya fue registrado"})
         }

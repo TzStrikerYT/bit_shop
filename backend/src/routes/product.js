@@ -1,3 +1,4 @@
+const { request, response } = require('express');
 const express = require('express');
 const router = express.Router();
 
@@ -11,6 +12,13 @@ router.get('/get-all', async (request, response) => {
 
     const products = await Product.find()
     return response.status(200).json({products})
+
+})
+
+router.get('/get-by/:id', async (request, response) => {
+
+    const productsbyuser = await Product.find({createdBy: request.params.id})
+    return response.status(200).json({products: productsbyuser})
 
 })
 

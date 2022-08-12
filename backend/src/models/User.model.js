@@ -8,6 +8,7 @@ const userSchema = new Schema(
         email: {type: String, required: true},
         password: {type: String, required: true},
         isActive: {type: Boolean, default: true},
+        role: {type: String, default: "client"}
     },
     {
         timestamps: true,

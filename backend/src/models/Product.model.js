@@ -9,6 +9,7 @@ const productSchema = new Schema(
         description: {type: String, default: "El usuario no añadio ninguna descripción"},
         stock: {type: Number, required: true },
         image: {type: String, required: true},
+        createdBy: {type: String, required: true}
     },
     {
         timestamps: true,

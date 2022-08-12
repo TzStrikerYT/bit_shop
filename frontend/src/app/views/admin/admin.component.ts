@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ProductService } from 'src/app/services/product.service';
 import { Product } from 'src/app/models/product.model';
 import { NgForm } from '@angular/forms';
+import { UserService } from 'src/app/services/user.service';
 
 @Component({
   selector: 'app-admin',
@@ -9,7 +10,7 @@ import { NgForm } from '@angular/forms';
   styleUrls: ['./admin.component.css'],
 })
 export class AdminComponent implements OnInit {
-  constructor(public productService: ProductService) {}
+  constructor(public productService: ProductService, public userService: UserService) {}
 
   ngOnInit(): void {
     this.getProducts();
@@ -61,7 +62,11 @@ export class AdminComponent implements OnInit {
       return
     }
 
-    const data = {description, image, name, stock, price}
+    const user = this.userService.decodeToken()
+    const createdBy = user._id
+    console.log({createdBy})
+
+    const data = {description, image, name, stock, price, createdBy}
 
     this.productService.createProduct(data).subscribe(
       (data) => {

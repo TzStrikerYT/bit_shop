@@ -7,6 +7,7 @@ export class User {
   isActive: boolean;
   password: string;
   confirmPassword: string;
+  role: string;
 
   constructor(
     _id = '',
@@ -15,8 +16,9 @@ export class User {
     lastName = '',
     isActive = true,
     password = '',
-    confirmPassword = ''
-  ) {
+    confirmPassword = '',
+    role = ''
+    ) {
     //inicializacion de losatributos cuando tengan un valor
 
     this._id = _id;
@@ -26,5 +28,6 @@ export class User {
     this.isActive = isActive;
     this.password = password;
     this.confirmPassword = confirmPassword;
+    this.role = role
   }
 }

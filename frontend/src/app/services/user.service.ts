@@ -48,6 +48,17 @@ export class UserService {
     return
   }
 
+  isAdmin(){
+    const data = this.decodeToken()
+    const isAdmin = data.role
+
+    if(isAdmin === "admin"){
+      return true
+    }
+
+    return false
+  }
+
   decodeToken(): any{
     const token = localStorage.getItem('token')
     const decoded = jwtDecode(token ? token : "Error en token")
