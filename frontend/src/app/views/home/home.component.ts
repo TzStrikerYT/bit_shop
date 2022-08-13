@@ -1,17 +1,17 @@
 import { Component, OnInit } from '@angular/core';
 import { ProductService } from 'src/app/services/product.service';
+import { UserService } from 'src/app/services/user.service';
 
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
-  styleUrls: ['./home.component.css']
+  styleUrls: ['./home.component.css'],
 })
 export class HomeComponent implements OnInit {
-
-  constructor(public productService: ProductService) { }
+  constructor(public productService: ProductService, public userService: UserService ) {}
 
   ngOnInit(): void {
-    this.getProducts()
+    this.getProductsByUser(this.userService.decodeToken()._id);
   }
 
   getProducts() {
@@ -25,6 +25,14 @@ export class HomeComponent implements OnInit {
     );
   }
 
-  
-
+  getProductsByUser(id: string) {
+      this.productService.getProductByUser(id).subscribe(
+        (data: any) => {
+          this.productService.products = data.products;
+        },
+        (error) => {
+          console.log(error);
+        }
+      );
+  }
 }

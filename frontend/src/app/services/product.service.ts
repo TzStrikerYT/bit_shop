@@ -20,6 +20,10 @@ export class ProductService {
     return this.http.get(`${this.URI_PRODUCTS}/get-all`)
   }
 
+  getProductByUser(id: any){
+    return this.http.get(`${this.URI_PRODUCTS}/get-by/${id}`)
+  }
+
   createProduct(data: any){
     return this.http.post(`${this.URI_PRODUCTS}/create`, data)
   }
